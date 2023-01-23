@@ -17,6 +17,8 @@ Sin mucho más que explicar, puedes jugar con los parámetros y ver los resultad
 
 **Aclaraciones**
 
+Todo el programa se encuentra en español y utilizando los nombres de variables empleados en la Universidad de Quilmes. Para mayor informacion consultar el material proporcionado por la Universidad. (http://bioprocesos.unq.edu.ar/Biopro%20I/material_did%C3%A1ctico%20biopro%20I%202010.htm)
+
 Esta versión 1.0 es la primera versión funcional, la interfaz gráfica es algo precaria al igual que las gráficas generadas con matplotlib. El objetivo es contar con una herramienta didáctica, que a futuro pueda ser mejorada para una mejor experiencia de usuario.
 
 ** Descargo de responsabilidad **
@@ -31,7 +33,6 @@ Welcome to Microorganism_Grouth_Simulator v1.0
 This program is designed to be used by any student who wants to interact with concepts of a classic bioprocess, in an interactive way.
 
 The simulator is structured around a main interface, in which one can simulate basic growth in a batch culture system. On the screen you can see all the crop parameters that you can modify. Once loaded you can view the growth in a graph, or download the data to be analyzed with an external program.
-![image](https://user-images.githubusercontent.com/71038398/214141009-9ef75461-75b5-4439-be4d-07dea2131b72.png)
 
 Within the main interface, one can modify specific parameters, in the "advanced options" tab.
 In addition, it is possible to carry out other types of cultures: Continuous culture and Batch fed.
@@ -42,6 +43,7 @@ Without much more to explain, one can play with the parameters and see the resul
 
 **Clarifications**
 
+The entire program is in Spanish and using the variable names used at the University of Quilmes. For more information consult the material provided by the University. (http://bioprocesos.unq.edu.ar/Biopro%20I/material_did%C3%A1ctico%20biopro%20I%202010.htm).
 This version 1.0 is the first functional version, the graphical interface is somewhat precarious as are the graphs generated with matplotlib. The objective is to have a teaching tool, which in the future could be improved for a better user experience.
 
 ** Disclaimer **
