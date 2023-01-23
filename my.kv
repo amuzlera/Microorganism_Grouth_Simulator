@@ -1,0 +1,399 @@
+WindowManager:
+	FirstWindow:
+    	id: firstw
+    	name: "Pantalla Principal"
+	SecondWindow:
+        id: secondw
+    	name: "Opciones avanzadas"
+    ContinuousWindow:
+        id: continuo
+        name: "continuo"
+    FeedBatchWindow:
+        id: alimentado
+        name: "alimentado"
+
+<FirstWindow>:
+    
+    umax: umax
+    yxs: yxs
+    tf: tiempo
+    fce: fce
+    id_fce: id_fce
+    fn: fn
+    id_fn: id_fn
+    x0: inoculo
+    yps: yps
+    id_p: id_p
+    kLa: kLa
+    excel: excel
+    
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "umax"
+            TextInput: 
+                text: "0.4"
+                id:umax
+                multiline:False
+            Label:
+                text: "Rendimiento"
+            TextInput: 
+                text: "0.5"
+                id:yxs
+                multiline:False
+            Label:
+                text : "tiempo de cultivo: "
+            TextInput: 
+                text: "10"
+                id:tiempo
+                multiline:False
+            Label:
+                text : "[FCE]: "
+            TextInput: 
+                text: "2"
+                id:fce
+                multiline:False
+            Label:
+                text : "Identidad de FCE: "
+            TextInput: 
+                text: "glu"
+                id:id_fce
+                multiline:False
+            Label:
+                text : "[fn]: "
+            TextInput: 
+                text: "0.5"
+                id:fn
+                multiline:False
+            Label:
+                text : "Identidad de fn: "
+            TextInput: 
+                text: "amonio"
+                id:id_fn
+                multiline:False
+            Label:
+                text : "[inoculo]: "
+            TextInput: 
+                text: "0.2"
+                id:inoculo
+                multiline:False
+            Label:
+                text : "Rendimiento producto: "
+            TextInput:
+                text: "0"
+                id:yps
+                multiline:False
+            
+            Label:
+                text : "kLa: "
+            TextInput:
+                text: "1000"
+                id:kLa
+                multiline:False
+            Label:
+                text : "Identidad del producto: "
+            TextInput:
+                id:id_p
+                multiline:False
+
+            Button:
+                text: "Graficar"
+                on_press: root.graficar()
+                size_hint_y: 0.5
+            
+            GridLayout:
+                cols:2            
+                Button:
+                    text: "Exportar"
+                    on_press: root.CreateDataset()
+                    size_hint_y: 0.5
+                TextInput:
+                    text: "Batch_1"
+                    id:excel
+    		Button:
+    			text: "Opciones avanzadas"
+    			size_hint_y: 0.5
+    			on_release: 
+    				app.root.current = "Opciones avanzadas"
+    				root.manager.transition.direction = "left"
+
+            Button:
+    			text: "Cultivo Continuo"
+    			size_hint_y: 0.5
+    			on_release: 
+    				app.root.current = "continuo"
+    				root.manager.transition.direction = "left"
+    				
+    		Button:
+    			text: "Batch Alimentado"
+    			size_hint_y: 0.5
+    			on_release: 
+    				app.root.current = "alimentado"
+    				root.manager.transition.direction = "left"		
+
+<SecondWindow>:
+    
+	ms: ms
+	tLag: tLag
+	pp_O2: pp_O2
+	beta: beta
+
+	GridLayout:
+        cols:2
+
+        Label:
+            text: "ms"
+        TextInput: 
+            text: "0.02"
+            id:ms
+            multiline:False
+            
+        Label:
+            text: "Duracion Fase latencia"
+        TextInput:
+            text: "2"
+            id:tLag
+            multiline:False
+            
+        Label:
+            text: "% de oxigeno"
+        TextInput:
+            text: "21"
+            id:pp_O2
+            multiline:False
+
+        Label:
+            text: "Beta de producto (del tipo Luedeking y Piret = aRx + BX)"
+        TextInput:
+            text: "0.1"
+            id:beta
+            multiline:False
+
+		Button:
+			text: "Volver"
+			font_size: 32
+			on_release: 
+				app.root.current = "Pantalla Principal"
+				root.manager.transition.direction = "right"
+				
+				
+<ContinuousWindow>:
+
+    d: d
+    sr_c: sr_c
+    nr_c: nr_c
+    barrido1: barrido1
+    barrido2: barrido2
+    barrido3: barrido3
+    excel_ee: excel_ee
+    excel_bd: excel_bd
+    GridLayout:
+        cols:2
+
+        Label:
+            text: "d"
+        TextInput: 
+            text: "0.5"
+            id:d
+            multiline:False
+            
+        Label:
+            text: "Concentración reservorio [Sr]"
+        TextInput:
+            text: "2"
+            id:sr_c
+            multiline:False
+        
+        Label:
+            text: "Concentración reservorio [Nr]"
+        TextInput:
+            text: "0.5"
+            id:nr_c
+            multiline:False
+        
+        Label:
+            text: "Barrido de D"
+
+        GridLayout:
+            cols:3
+            GridLayout:
+                cols:3
+                
+                Label:
+                    text: "D inicial"
+                Label:
+                    text: "D final"
+                Label:
+                    text: "Intervalos de D (paso)"
+                
+                TextInput:
+                    text: "0"
+                    id:barrido1
+                    halign: 'center'
+                    valign: 'middle'
+                    multiline:False
+                
+                TextInput:
+                    text: "1"
+                    id:barrido2
+                    halign: 'center'
+                    valign: 'middle'
+                    multiline:False            
+                
+                TextInput:
+                    text: "0.1"
+                    id:barrido3
+                    halign: 'center'
+                    valign: 'middle'
+                    multiline:False            
+            
+            
+        Button:
+            text: "Generar estado estacionario"
+            font_size: 32
+            on_release: root.GenerarEstadoEstacionario()
+            
+        Button:
+            text: "Barrido de D"
+            font_size: 32
+            on_release: root.BarridoDe_D()   
+            
+
+		Button:
+			text: "Volver"
+			font_size: 32
+			on_release: 
+				app.root.current = "Pantalla Principal"
+				root.manager.transition.direction = "right"
+				
+		Button:
+			text: "Opciones avanzadas"
+			size_hint_y: 0.5
+			on_release: 
+				app.root.current = "Opciones avanzadas"
+				root.manager.transition.direction = "left"
+        
+        GridLayout:
+            cols:2            
+            Button:
+                text: "Exportar EE"
+                on_press: root.CreateDataset_ee()
+                size_hint_y: 0.5
+            TextInput:
+                text: "Estado_Estacionario_1"
+                id:excel_ee
+        GridLayout:
+            cols:2            
+            Button:
+                text: "Exportar Barrido"
+                on_press: root.CreateDataset_bd()
+                size_hint_y: 0.5
+            TextInput:
+                text: "Barrido_D_1"
+                id:excel_bd
+    
+<FeedBatchWindow>:
+
+    f: f
+    uc: uc
+    v: v
+    sr_a: sr_a
+    nr_a: nr_a
+    t_a: t_a
+    excel_ba: excel_ba
+    
+    GridLayout:
+        cols:2
+        Label:
+            text: "Alimentacion"     
+        GridLayout:
+            cols:2
+            Label:
+                text: "Flujo inicial"
+            TextInput: 
+                text: "0.5"
+                id:f
+                multiline:False
+            Label:
+                text: "u de consigna (u=0 para flujo cte)"
+            TextInput: 
+                text: "0.1"
+                id:uc
+                multiline:False
+        Label:
+            text: "Volumen inicial (batch)"
+        TextInput: 
+            text: "10"
+            id:v
+            multiline:False
+        
+        Label:
+            text: "Tiempo de alimentación"
+        TextInput: 
+            text: "10"
+            id:t_a
+            multiline:False
+            
+        Label:
+            text: "Concentración reservorio [Sr]"
+        TextInput:
+            text: "2"
+            id:sr_a
+            multiline:False
+            
+        Label:
+            text: "Concentración reservorio [Nr]"
+        TextInput:
+            text: "2"
+            id:nr_a
+            multiline:False
+
+		Button:
+			text: "Volver"
+			font_size: 32
+			on_release: 
+				app.root.current = "Pantalla Principal"
+				root.manager.transition.direction = "right"
+				
+		Button:
+			text: "Opciones avanzadas"
+			size_hint_y: 0.5
+			on_release: 
+				app.root.current = "Opciones avanzadas"
+				root.manager.transition.direction = "left"    
+        Button:
+			text: "Generar Cultivo"
+			size_hint_y: 0.5
+			on_release: 
+				root.GenerarAlimentado()
+        
+        GridLayout:
+            cols:2            
+            Button:
+                text: "Exportar"
+                on_press: root.CreateDataset_ba()
+                size_hint_y: 0.5
+            TextInput:
+                text: "Batch_Alimentado_1"
+                id:excel_ba
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
